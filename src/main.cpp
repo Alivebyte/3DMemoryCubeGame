@@ -16,7 +16,7 @@ class Game : public olc::PixelGameEngine
 public:
 	Game()
 	{
-		sAppName = "Memory";
+		sAppName = "3D Memory Cube Game";
 	}
 private:
 	void SetMouseView(float fElapsedTime)
@@ -92,6 +92,7 @@ public:
 			bUserControlEnabled = false;
 			bRender = false;
 			memorizeShapes = { 0, 0, 0, 0};
+			fSelectionOffset = 0;
 			gameShapes = { 0, 0, 0, 0};
 			correctCount = 0;
 			selectedShape = 0;
@@ -307,6 +308,7 @@ public:
 		olc::GFX3D::mat4x4 matScale = olc::GFX3D::Math::Mat_MakeScale(2.5f, 2.5f, 2.5f);
 				
 		float fOffset = 0;
+		
 		if (bRender)
 		{
 			for (Shape shape : shapesToDraw)
@@ -329,15 +331,7 @@ public:
 			DrawString({ (ScreenWidth() / 2) - 8, (ScreenHeight() / 2) - 212 }, std::to_string((int)fWarmupTimer));
 			break;
 		case GAME_START:
-			//DrawString(10, 10, std::to_string(selectedShape));
-			//DrawString(10, 20, std::to_string(selectedShapeColor));
-
-			
-			matScale = olc::GFX3D::Math::Mat_MakeScale(0.0f, 5.0f, 0.0f);
-			matWorld = olc::GFX3D::Math::Mat_MakeTranslation(0.0f, 5.0f, 0.0f);
-
-			matWorld = olc::GFX3D::Math::Mat_MultiplyMatrix(matWorld, matScale);
-
+		
 			pipe.SetTransform(matWorld);
 
 			pipe.SetTexture(sprites[7]);
@@ -401,7 +395,7 @@ private:
 	bool bUserControlEnabled;
 	bool bGameStarted;
 	bool bRender;
-	
+	float fSelectionOffset = 0;
 	int selectedShape = 0;
 	int selectedShapeColor = 0;
 	int correctCount = 0;
