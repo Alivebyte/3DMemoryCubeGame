@@ -9,3 +9,5 @@ Left and Right Arrow Keys - pick colors.
 ​Enter - confirm the color for selected cube and move to the next one.
 
 There is a slight issue when you pick the color and move to the next cube the previos cube's color applies to the next one. Don't worry, you can still pick the colors by using arrow keys. 
+
+The game is made using olcPixelGameEngine 2.0 along with it's Graphics 3D extension. I kinda wish I could do more for a jam as I had many ideas, but unfortunately, they were too ambitious for me.
